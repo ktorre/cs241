@@ -1,0 +1,11 @@
+Binary Search Tree
+Available options: (A)dd, (D)elete, (P)rint, (S)earch, (Q)uit
+>> >> >> >> Value already in tree
+>> Pre-Order : 7 3 2 
+In-Order  : 2 3 7 
+Post-Order: 2 3 7 
+>> >> Value not in tree
+>> Pre-Order : 7 3 
+In-Order  : 3 7 
+Post-Order: 3 7 
+>> Exiting...
