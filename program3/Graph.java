@@ -13,6 +13,32 @@ public class Graph {
 
 	}
 
+	public void dijkstra( Vertex vertex ) {
+		Set<Vertex> vSet = new HashSet<Vertex>();
+		Set<String> keys = getVertexSet();
+		Iterator<String> vIterator = keys.iterator();
+
+		while ( vIterator.hasNext() ) {
+			Vertex tmpVert = vertices.get( vIterator.next() );
+			tmpVert.setCost( -1 ); // Using -1 as infinity
+			tmpVert.setPredecessor( null );
+			vSet.add( tmpVert );
+		}
+
+		vertex.setCost = 0;
+
+		Iterator<Vertex> vertIt = vSet.iterator();
+
+		while ( vertIt.hasNext() ) {
+			// u = smallest 
+		}
+	
+	}
+
+	public Set<String> getVertexSet() {
+		return vertices.keySet();
+	}
+
 	public boolean addVertex( String name ) {
 		boolean duplicate = vertices.containsKey( name );
 		if ( !duplicate ) {

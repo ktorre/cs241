@@ -58,6 +58,17 @@ public class DelatorreKp3 {
 		}
 		System.out.println( " }" );
 
+		// Part 5
+		System.out.println( "\n Part Five:" );
+		projectGraph.dijkstra( projectGraph.getVertex( "A" ) );
+		System.out.println( "Paths from A:" );
+		Set<String> keys = projectGraph.getVertexSet();
+		Iterator<String> keyPointer = keys.iterator();
+		while ( keyPointer.hasNext() ) {
+			vertex = projectGraph.getVertex( keyPointer.next() );
+			System.out.printf( "To %s: length %d\n", vertex.getName(), vertex.getCost() );
+		}
+
 
 	}
 
