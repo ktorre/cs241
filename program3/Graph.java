@@ -20,19 +20,48 @@ public class Graph {
 
 		while ( vIterator.hasNext() ) {
 			Vertex tmpVert = vertices.get( vIterator.next() );
-			tmpVert.setCost( -1 ); // Using -1 as infinity
+			tmpVert.setCost( Integer.MAX_VALUE ); // Using max value as inf
 			tmpVert.setPredecessor( null );
+			tmpVert.unvisit();
 			vSet.add( tmpVert );
 		}
 
-		vertex.setCost = 0;
+		vertex.setCost( 0 ); // Set root to 0
 
-		Iterator<Vertex> vertIt = vSet.iterator();
+		Iterator<Vertex> vertIt = vSet.iterator(); // Reset iterator
 
 		while ( vertIt.hasNext() ) {
-			// u = smallest 
+			vertIt.next();
+			Vertex u = minDistance( vSet );
+			u.visit();
+
+			ListIterator<Edge> nList = u.getNeighborIterator();
+			while ( nList.hasNext() ) {
+				Edge tmpEdge = nList.next();
+				Vertex edgeVert = tmpEdge.getVertex();
+				if ( !edgeVert.isVisited() && u.getCost() != Integer.MAX_VALUE && ( u.getCost() + tmpEdge.getWeight() ) < edgeVert.getCost() ) {
+					edgeVert.setCost( u.getCost() + tmpEdge.getWeight() );
+				}
+			}
 		}
 	
+	}
+
+	public Vertex minDistance( Set<Vertex> vSet ) {
+		int minDist = Integer.MAX_VALUE;
+		Vertex minVert = null;
+		Iterator<Vertex> vPoint = vSet.iterator();
+
+		while ( vPoint.hasNext() ) {
+			Vertex tmpVert = vPoint.next();
+
+			if ( !tmpVert.isVisited() && tmpVert.getCost() <= minDist ) {
+				minDist = tmpVert.getCost();
+				minVert = tmpVert;
+			}
+		}
+
+		return minVert;
 	}
 
 	public Set<String> getVertexSet() {
@@ -47,6 +76,10 @@ public class Graph {
 		
 		return duplicate;
 
+	}
+
+	public void deleteVertex( String name ) {
+		vertices.remove( name );	
 	}
 
 	public Vertex getVertex( String name ) {

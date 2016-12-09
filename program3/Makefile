@@ -1,12 +1,12 @@
-FILES = DelatorreKp3.java Graph.java Vertex.java Edge.java
+FILES = program3Modular.java Graph.java Vertex.java Edge.java
 
-DelatorreKp3.class : $(FILES)
+program3Modular.class : $(FILES)
 	@echo -n Compiling project...
-	@javac -nowarn DelatorreKP3.java
+	@javac -nowarn program3Modular.java
 	@echo Done
 run :
 	@echo -n -e Executing program...\n
-	@java DelatorreKp3
+	@java program3Modular
 	@echo -n -e \nFinished\n
 
 clean :
